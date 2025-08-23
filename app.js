@@ -93,7 +93,7 @@ app.use((err,req,res,next)=>{
 })
 
 app.use((req, res) => {
-   res.status(404).render("error.ejs", { message: "Page Not Found" });
+   res.status(404).render("Listings/Error.ejs", { message: "Page Not Found" });
 });
 
 app.listen(Port,()=>{
