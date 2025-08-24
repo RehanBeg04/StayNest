@@ -89,7 +89,7 @@ app.use("/",userroutes);
 
 app.use((err,req,res,next)=>{
    let {status=500,message='Internal Server error'}=err;
-   res.status(status).render("Error.ejs",{message});
+   res.status(status).render("Listings/Error.ejs",{message});
 })
 
 app.use((req, res) => {
