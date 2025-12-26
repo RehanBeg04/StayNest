@@ -32,7 +32,7 @@ async function main(){
     await mongoose.connect(process.env.ATLASDB_URL);
 }
 
-const Port=3000;
+const Port=process.env.PORT;
 app.set("view engine","ejs");
 app.set("views",path.join(__dirname,"views"));
 app.use(express.urlencoded({ extended: true }));
