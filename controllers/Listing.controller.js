@@ -26,6 +26,7 @@ module.exports.showListing=async(req,res)=>{
 module.exports.createListing=async(req,res)=>{
     let url=req.file.path;
     let filename=req.file.filename;
+    console.log(req.body.listing);
     const newlisting=new Listing(req.body.listing);
     newlisting.owner=req.user._id;
     newlisting.image={url,filename};
@@ -54,7 +55,7 @@ module.exports.updateListing=async(req,res)=>{
     listing.image={url,filename};
     await listing.save();
    }
-    console.log(req.body);
+
     req.flash("success","Listing Updated Successfully");
     res.redirect(`/Listing/${id}`);
 
@@ -62,7 +63,7 @@ module.exports.updateListing=async(req,res)=>{
 
 module.exports.deleteListing=async(req,res)=>{
      let {id}=req.params;
-     let Deletelisting=await Listing.findByIdAndDelete(id);
+     await Listing.findByIdAndDelete(id);
      req.flash("success","Listing Deleted Successfully!");
      res.redirect("/Listing");
 
@@ -78,7 +79,7 @@ module.exports.searchListing=async(req,res)=>{
       }
 
       if(listings.length===0){
-        res.render("Error.ejs",{message:"Sorry Listing does not found"});
+        res.render("Listings/Error.ejs",{message:"Sorry Listing does not found"});
       }else{
         res.render("Listings/Search.ejs",{listings});
       }

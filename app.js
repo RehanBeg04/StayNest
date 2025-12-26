@@ -1,8 +1,7 @@
 
 if(process.env.NODE_ENV!="production"){
-    require("dotenv").config();
-}
-
+   require('dotenv').config();
+};
 const express=require("express");
 const mongoose=require("mongoose");
 const path=require("path");
@@ -21,7 +20,8 @@ const userroutes=require("./routes/user.routes.js");
 
 const app=express();
 
-const dbURL=process.env.ATLASDB_URL;
+
+
 main().then(()=>{
     console.log("Connect to DB");
 }).catch((err)=>{
@@ -29,7 +29,7 @@ main().then(()=>{
 })
 
 async function main(){
-    await mongoose.connect(dbURL);
+    await mongoose.connect(process.env.ATLASDB_URL);
 }
 
 const Port=3000;
@@ -42,7 +42,7 @@ app.engine("ejs",ejsMate);
 
 
 const store=MongoStore.create({
-    mongoUrl:dbURL,
+    mongoUrl:process.env.ATLASDB_URL,
     crypto:{
         secret:process.env.SECRET_CODE,
     },

@@ -33,7 +33,7 @@ const ListSchema=new Schema({
     feature:{
      type:String,
      enum:[
-        "Trending","The Grand Horizon","Castles","Mountain cities","Beach","Amazing Pool","Camping","Farms","Arctic"
+        "Trending","The Grand Horizon","Castles","Iconic Cities","Mountain cities","Beach","Amazing Pool","Camping","Farms","Arctic"
      ],
     }
 });
